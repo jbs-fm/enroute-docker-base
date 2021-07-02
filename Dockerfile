@@ -3,7 +3,7 @@ FROM php:7.1-fpm-alpine
 # Install system dependencies
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" >> /etc/apk/repositories
 ARG APK_COMMON_DEPENDENCIES="dcron busybox-suid libcap curl zip unzip git nodejs npm ttf-freefont"
-ARG CHROMIUM="udev nss freetype harfbuzz ca-certificates chromium"
+ARG CHROMIUM="chromium nss freetype harfbuzz ca-certificates"
 ARG FONTS="ttf-dejavu ttf-droid ttf-liberation ttf-ubuntu-font-family"
 RUN apk add --update --no-cache $APK_COMMON_DEPENDENCIES $CHROMIUM $FONTS
 
