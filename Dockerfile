@@ -33,6 +33,6 @@ RUN addgroup $NON_ROOT_USER wheel
 
 # Install global node dependencies
 ENV NPM_CONFIG_PREFIX=~/.npm-global
-ENV PATH "$PATH:~/.npm-global/bin"
+ENV PATH "$PATH:/home/$NON_ROOT_USER/.npm-global/bin"
 USER $NON_ROOT_USER
 RUN npm install -g pm2 @nesk/puphpeteer@1.6.0
