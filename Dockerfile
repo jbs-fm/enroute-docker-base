@@ -35,4 +35,4 @@ RUN addgroup $NON_ROOT_USER wheel
 ENV NPM_CONFIG_PREFIX=~/.npm-global
 ENV PATH "$PATH:/home/$NON_ROOT_USER/.npm-global/bin"
 USER $NON_ROOT_USER
-RUN npm install -g pm2 puppeteer@1.8.1
+RUN npm install -g pm2 puppeteer@1.8.0
