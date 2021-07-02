@@ -3,9 +3,9 @@ FROM php:7.1-fpm-alpine
 # Install system dependencies
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" >> /etc/apk/repositories
 ARG APK_COMMON_DEPENDENCIES="dcron busybox-suid libcap curl zip unzip git nodejs npm ttf-freefont"
-ARG CHROMIUM_DEPENDENCIES="nss freetype harfbuzz ca-certificates"
+ARG CHROMIUM="udev nss freetype harfbuzz ca-certificates chromium"
 ARG FONTS="ttf-dejavu ttf-droid ttf-liberation ttf-ubuntu-font-family"
-RUN apk add --update --no-cache $APK_COMMON_DEPENDENCIES $CHROMIUM_DEPENDENCIES $FONTS
+RUN apk add --update --no-cache $APK_COMMON_DEPENDENCIES $CHROMIUM $FONTS
 
 # Install PHP extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
@@ -36,4 +36,4 @@ RUN addgroup $NON_ROOT_USER wheel
 ENV NPM_CONFIG_PREFIX=~/.npm-global
 ENV PATH "$PATH:/home/$NON_ROOT_USER/.npm-global/bin"
 USER $NON_ROOT_USER
-RUN npm install -g pm2 puppeteer@1.8.0
+RUN npm install -g pm2
