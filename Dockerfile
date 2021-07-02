@@ -26,8 +26,8 @@ COPY --from=ghcr.io/surnet/alpine-wkhtmltopdf:3.10-0.12.6-full /bin/wkhtmltopdf 
 COPY --from=ghcr.io/surnet/alpine-wkhtmltopdf:3.10-0.12.6-full /bin/wkhtmltoimage /usr/local/bin/wkhtmltoimage
 
 # Add & switch to non-root user: 'app'
-ARG NON_ROOT_GROUP=${NON_ROOT_GROUP:-app}
-ARG NON_ROOT_USER=${NON_ROOT_USER:-app}
+ENV NON_ROOT_GROUP=${NON_ROOT_GROUP:-app}
+ENV NON_ROOT_USER=${NON_ROOT_USER:-app}
 RUN addgroup -S $NON_ROOT_GROUP && adduser -S $NON_ROOT_USER -G $NON_ROOT_GROUP
 RUN addgroup $NON_ROOT_USER wheel
 
@@ -35,4 +35,4 @@ RUN addgroup $NON_ROOT_USER wheel
 ENV NPM_CONFIG_PREFIX=~/.npm-global
 ENV PATH "$PATH:~/.npm-global/bin"
 USER $NON_ROOT_USER
-RUN npm i -G pm2 @nesk/puphpeteer@1.6.0
+RUN npm install -g pm2 @nesk/puphpeteer@1.6.0
