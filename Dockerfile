@@ -18,7 +18,7 @@ COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/local/
 COPY --from=caddy:2.4.3 /usr/bin/caddy /usr/local/bin/caddy
 RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
 
-# Install composer
+# Install composer 2
 COPY --from=composer/composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # Install wkhtml
