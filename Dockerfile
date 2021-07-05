@@ -6,8 +6,8 @@ RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpin
 
 # Install system dependencies
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" >> /etc/apk/repositories
-ARG APK_COMMON_DEPENDENCIES="dcron busybox-suid libcap curl zip unzip git nodejs npm ttf-freefont"
-ARG FONTS="ttf-dejavu ttf-droid ttf-liberation ttf-ubuntu-font-family"
+ARG APK_COMMON_DEPENDENCIES="dcron busybox-suid libcap curl zip unzip git nodejs npm ca-certificates ttf-freefont"
+ARG FONTS="fontconfig ttf-dejavu ttf-droid ttf-liberation ttf-ubuntu-font-family"
 RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/latest-stable/main $APK_COMMON_DEPENDENCIES $FONTS
 
 # Install PHP extensions
