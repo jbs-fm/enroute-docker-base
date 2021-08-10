@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.10/main" >> /etc/apk/repositories
 ARG CHROMIUM_DEPENDENCIES="nss freetype harfbuzz ca-certificates"
@@ -6,7 +6,7 @@ RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpin
 
 # Install system dependencies
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/latest-stable/main" >> /etc/apk/repositories
-ARG APK_COMMON_DEPENDENCIES="dcron busybox-suid libcap curl zip unzip git nodejs npm ca-certificates ttf-freefont"
+ARG APK_COMMON_DEPENDENCIES="bash dcron busybox-suid libcap curl zip unzip git nodejs npm ca-certificates ttf-freefont"
 ARG FONTS="fontconfig ttf-dejavu ttf-droid ttf-liberation ttf-ubuntu-font-family"
 RUN apk add --update --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/latest-stable/main $APK_COMMON_DEPENDENCIES $FONTS
 
